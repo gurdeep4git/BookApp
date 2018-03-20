@@ -1,0 +1,11 @@
+{
+  "name": "BooksApp",
+  "version": "1.0.0",
+  "description": "Modern Js Books App",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
+  }
+}
