@@ -1,0 +1,56 @@
+function Book(title,author,isbn){
+    this.title = title;
+    this.author=author;
+    this.isbn=isbn;
+}
+
+function UI(){}
+
+UI.prototype.addBookToList = function(book){
+    const list = document.getElementById("bookList");
+    const row = document.createElement("tr");
+    row.innerHTML = `<td>${book.title}</td>
+                    <td>${book.author}</td>
+                    <td>${book.isbn}</td>
+                    <td><a href="#">X</a></td>`;
+    list.appendChild(row);
+
+}
+UI.prototype.clearFields = function(){
+    bookTitle.value="";
+    bookAuthor.value="";
+    bookIsbn.value="";
+}
+
+
+/*Selectors*/
+const submitBtn = document.querySelector(".js-submit");
+const bookTitle = document.getElementById("bookTitle");
+const bookAuthor = document.getElementById("bookAuthor");
+const bookIsbn = document.getElementById("bookIsbn");
+
+loadEventHandlers();
+
+function loadEventHandlers(){
+    submitBtn.addEventListener("click",addBook);
+}
+
+function addBook(e){
+    let _title = bookTitle.value;
+    let _author = bookAuthor.value;
+    let _isbn = bookIsbn.value;
+    let book = new Book(_title,_author,_isbn);
+    
+    const ui = new UI();
+    //add validation
+    if(_title===''||_author===''||_isbn===''){
+        //show alert
+        alert('Pls fill the details correctly');
+    }
+    else{
+        // add to grid
+        ui.addBookToList(book);
+        ui.clearFields();
+    }
+    e.preventDefault();
+}

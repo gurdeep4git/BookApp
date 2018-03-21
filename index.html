@@ -26,7 +26,7 @@
                                 <label for="bookIsbn">ISBN</label>
                                 <input type="text" class="form-control" id="bookIsbn">
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary js-submit">Submit</button>
                         </form>
                     </div>
                 </div>
@@ -37,23 +37,16 @@
                             <th>Title</th>
                             <th>Author</th>
                             <th>ISBN</th>
+                            <th></th>
                         </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                        </tbody>
+                    </thead>
+                    <tbody id="bookList">
+                        
+                    </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <script src="./js/app.js"></script>
 </body>
 </html>
