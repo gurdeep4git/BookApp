@@ -21,6 +21,16 @@ UI.prototype.clearFields = function(){
     bookAuthor.value="";
     bookIsbn.value="";
 }
+UI.prototype.showAlertMsg = function(msg,type){
+    const alert = document.createElement("div");
+    alert.className=`alert ${type}`;
+    alert.appendChild(document.createTextNode(msg));
+    const container = document.querySelector(".card-body");
+    container.insertBefore(alert,bookForm);
+    setTimeout(function(){
+        document.querySelector(".alert").remove();
+    },1000);
+}
 
 
 /*Selectors*/
@@ -28,6 +38,7 @@ const submitBtn = document.querySelector(".js-submit");
 const bookTitle = document.getElementById("bookTitle");
 const bookAuthor = document.getElementById("bookAuthor");
 const bookIsbn = document.getElementById("bookIsbn");
+const bookForm = document.getElementById("bookForm");
 
 loadEventHandlers();
 
@@ -45,12 +56,13 @@ function addBook(e){
     //add validation
     if(_title===''||_author===''||_isbn===''){
         //show alert
-        alert('Pls fill the details correctly');
+        ui.showAlertMsg("Please fill the details correctly","alert-danger");
     }
     else{
         // add to grid
         ui.addBookToList(book);
         ui.clearFields();
+        ui.showAlertMsg("Book added successfully","alert-success");
     }
     e.preventDefault();
 }
